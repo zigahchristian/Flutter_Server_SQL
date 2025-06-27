@@ -1,0 +1,49 @@
+{
+  "name": "dmccserver",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --legacy-watch",
+    "build": "tsc",
+    "start": "node index.js",
+    "test": "jest",
+    "dbpull": "npx prisma db pull && npx prisma generate"
+  },
+  "devDependencies": {
+    "babel-jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "nodemon": "^3.0.2",
+    "prisma": "^6.10.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
+  },
+  "dependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/node": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@prisma/client": "^6.10.1",
+    "body-parser": "^1.20.2",
+    "compression": "^1.7.4",
+    "connect-pg-simple": "~8.0.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "csvtojson": "^2.0.10",
+    "dayjs": "^1.11.10",
+    "dotenv": "^16.3.1",
+    "express": "*",
+    "express-fileupload": "^1.5.1",
+    "express-session": "^1.17.3",
+    "express-validator": "^7.2.1",
+    "helmet": "^7.1.0",
+    "http": "^0.0.1-security",
+    "jest": "^29.7.0",
+    "morgan": "^1.10.0",
+    "pg": "^8.16.2",
+    "supertest": "^6.3.3",
+    "taxi": "file:..",
+    "ts-dotenv": "^0.9.1",
+    "zod": "^3.25.67"
+  }
+}

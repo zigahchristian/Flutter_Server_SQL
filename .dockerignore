@@ -1,0 +1,10 @@
+# Ignore common development-related files and directories
+.git
+.gitignore
+node_modules
+tmp/
+*.log
+.DS_Store
+
+# Re-include a specific file within an ignored directory
+!node_modules/package.json

@@ -1,0 +1,53 @@
+delete all tables
+DO
+$$
+DECLARE
+    tbl text;
+BEGIN
+    -- Disable foreign key constraints
+    EXECUTE 'SET session_replication_role = replica';
+
+    -- Loop through all user-defined tables
+    FOR tbl IN
+        SELECT tablename FROM pg_tables
+        WHERE schemaname = 'public'
+    LOOP
+        EXECUTE format('DROP TABLE IF EXISTS public.%I CASCADE;', tbl);
+    END LOOP;
+
+    -- Re-enable constraints
+    EXECUTE 'SET session_replication_role = origin';
+END
+$$;
+::ffff:172.18.0.1 - - [26/Jun/2025:01:33:17 +0000] "GET /api/member HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:01:33:25 +0000] "GET /api/member HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:01:33:26 +0000] "GET /api/member HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:01:34:10 +0000] "GET /api/member HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:01:34:17 +0000] "GET /api/member HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:01:35:29 +0000] "GET /api/member HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:01:35:35 +0000] "GET /api/member HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:01:41:31 +0000] "GET /api/member HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:01:41:45 +0000] "GET /api/member HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:01:44:10 +0000] "GET /api/member HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:01:44:49 +0000] "GET /api/member HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:01:47:09 +0000] "GET /api/member HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:01:47:49 +0000] "GET /api/member HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:01:51:27 +0000] "GET /api/member HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:01:51:39 +0000] "GET /api/member HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:01:56:57 +0000] "GET /api/member HTTP/1.1" 200 2 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:01:57:05 +0000] "GET /api/member HTTP/1.1" 200 2 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:01:58:03 +0000] "GET /api/member HTTP/1.1" 200 4730 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:02:00:08 +0000] "GET /api/member HTTP/1.1" 200 4730 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:07:38:30 +0000] "GET /api/member HTTP/1.1" 200 4730 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:07:40:47 +0000] "POST /api/member/createnew HTTP/1.1" 404 48 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:07:41:03 +0000] "POST /api/member/create HTTP/1.1" 400 249 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:07:41:59 +0000] "POST /api/member/create HTTP/1.1" 400 120 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:07:42:19 +0000] "POST /api/member/create HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:07:43:33 +0000] "POST /api/member/create HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:07:43:38 +0000] "POST /api/member/create HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:07:52:30 +0000] "POST /api/member/create HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:07:54:23 +0000] "POST /api/member/create HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:07:55:47 +0000] "POST /api/member/create HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:07:59:14 +0000] "POST /api/member/create HTTP/1.1" 500 26 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:08:00:19 +0000] "POST /api/member/create HTTP/1.1" 409 52 "-" "insomnia/11.2.0"
+::ffff:172.18.0.1 - - [26/Jun/2025:08:01:07 +0000] "POST /api/member/create HTTP/1.1" 201 479 "-" "insomnia/11.2.0"

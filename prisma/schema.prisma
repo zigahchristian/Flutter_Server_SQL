@@ -1,0 +1,84 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model user_sessions {
+  sid    String   @id(map: "session_pkey") @db.VarChar
+  sess   Json     @db.Json
+  expire DateTime @db.Timestamp(6)
+
+  @@index([expire], map: "IDX_session_expire")
+}
+
+model attendance {
+  id            Int      @id @default(autoincrement())
+  memberid      Int
+  turnoutid     Int
+  date          DateTime @db.Date
+  participation String?
+  remarks       String?
+  members       members  @relation(fields: [memberid], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  turnout       turnout  @relation(fields: [turnoutid], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([memberid, turnoutid])
+}
+
+model members {
+  id                           Int          @id @default(autoincrement())
+  membername                   String
+  firstname                    String
+  lastname                     String
+  email                        String       @unique
+  phone                        String?
+  position                     String?
+  dateofbirth                  DateTime?    @db.Date
+  occupation                   String?
+  otherskills                  String?
+  profilepicture               String?
+  emergencycontactphone        String?
+  emergencycontactname         String?
+  emergencycontactrelationship String?
+  joindate                     DateTime?    @db.Date
+  membershiptype               String?
+  status                       String?
+  attendance                   attendance[]
+  payment                      payment[]
+  attendance                   attendance[]
+  profile                      profile?
+}
+
+model payment {
+  id            Int      @id @default(autoincrement())
+  memberid      Int
+  amount        Decimal  @db.Decimal(10, 2)
+  paymentdate   DateTime @db.Date
+  paymentmethod String?
+  assessmentid  Int?
+  members       members  @relation(fields: [memberid], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model profile {
+  id        Int     @id @default(autoincrement())
+  memberid  Int     @unique
+  firstname String?
+  lastname  String?
+  pictururl String?
+  members   members @relation(fields: [memberid], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model turnout {
+  id          Int          @id @default(autoincrement())
+  name        String
+  description String?
+  turnoutdate DateTime     @db.Date
+  location    String?
+  organizer   String?
+  status      String?
+  attendance  attendance[]
+}

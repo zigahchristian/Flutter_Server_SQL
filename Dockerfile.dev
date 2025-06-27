@@ -1,0 +1,37 @@
+# Use official Node.js image
+FROM node:20
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies first
+COPY package*.json ./
+RUN npm install
+
+# Copy Prisma files and generate client
+COPY prisma ./prisma
+
+# ENV required by Prisma
+ENV PRISMA_GENERATE_SKIP_AUTOINSTALL=true
+
+
+# Pull DB
+#RUN npx prisma db pull
+
+# Generate Prisma Client
+RUN npx prisma generate
+
+#Generate Primas dev table
+#RUN npx prisma migrate dev --name init
+
+
+# Copy remaining project files
+COPY . .
+
+# Expose your port
+EXPOSE 7240
+
+# Start your app
+
+
+CMD ["npm", "run", "dev"]

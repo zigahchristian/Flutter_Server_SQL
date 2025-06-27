@@ -1,0 +1,85 @@
++UserModel
+username
+email
+
+Profile Model
+userid
+firstname
+lastname
+dob
+avatar
+
+MemberModel
+first_name
+last_name
+other_names
+dob
+gender
+email
+phone1
+phone2
+country
+avatar
+
+dayborn
+digital_address
+location
+hometown
+hometown_region
+  
+//Education Information
+education_qualifications
+  
+// Occupation
+occupations
+place_of_work
+occupation_status
+other_skills
+  
+// Sacraments
+
+// Baptism
+baptised
+officiating_minister
+b_place_of_baptism
+nlb
+god_parent
+
+//First Communion
+first_communion
+fc_officiating_minister
+place_of_first_communion
+date_of_first_communion
+nlc
+fc_god_parent
+
+//Confirmation
+confirmed
+c_officiating_minister
+place_of_confirmation
+nlconf
+c_god_parent
+
+//Holy Matrimony
+married
+hm_officiating_minister
+hm_place_of_confirmation
+hm_date_of_confirmation
+nlm
+name_of_spouse
+spouse_nationality
+spouse_religious_demomination
+number_of_children
+hm_god_parent
+
+//Previous Church Information
+previous_parish
+associations
+dues
+
+Dues Model
+type_of_dues
+price
+date 
+paid_by
+created_by
