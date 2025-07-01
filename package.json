@@ -9,7 +9,7 @@
     "build": "tsc",
     "start": "node index.js",
     "test": "jest",
-    "dbpull": "npx prisma db pull && npx prisma generate"
+    "dbpull": "npx prisma db pull"
   },
   "devDependencies": {
     "babel-jest": "^29.7.0",

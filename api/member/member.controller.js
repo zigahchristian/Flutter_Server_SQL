@@ -90,10 +90,6 @@ export const getAMemberById = async (req, res) => {
 };
 
 export const updateMemberByID = async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty())
-    return res.status(400).json({ errors: errors.array() });
-
   const { id } = req.params;
   const {
     membername,
@@ -115,7 +111,7 @@ export const updateMemberByID = async (req, res) => {
   } = req.body;
 
   try {
-    const updated = await prisma.member.update({
+    const updated = await prisma.members.update({
       where: { id: Number(id) },
       data: {
         ...(membername && { membername }),
@@ -148,14 +144,10 @@ export const updateMemberByID = async (req, res) => {
 };
 
 export const deleteMember = async (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty())
-    return res.status(400).json({ errors: errors.array() });
-
   const { id } = req.params;
 
   try {
-    const deleted = await prisma.member.delete({
+    const deleted = await prisma.members.delete({
       where: { id: Number(id) },
     });
 

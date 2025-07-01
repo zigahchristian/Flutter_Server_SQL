@@ -49,7 +49,6 @@ model members {
   status                       String?
   attendance                   attendance[]
   payment                      payment[]
-  attendance                   attendance[]
   profile                      profile?
 }
 
