@@ -1,6 +1,7 @@
 import { prisma } from "../../db/prismaClient.js";
 import { generateId } from "../../helpers/helpers.js";
 
+export const testPrimma = prisma;
 export const createNewMember = async (req, res) => {
   const id = +generateId(2);
   console.log(typeof id, id);
@@ -66,7 +67,7 @@ export const getAllMembers = async (req, res) => {
     res.status(200).json(members);
   } catch (err) {
     console.error("Error fetching members:", err.message);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Server error", error: err.message });
   }
 };
 
@@ -151,7 +152,7 @@ export const deleteMember = async (req, res) => {
       where: { id: Number(id) },
     });
 
-    res.status(200).json({
+    res.status(204).json({
       message: "Member deleted successfully",
       deletedMember: deleted,
     });

@@ -29,6 +29,10 @@ services:
       - .env
     networks:
       - backend
+    command:
+      - "postgres"
+      - "-c"
+      - "ssl=off" # Explicitly disable SSL
 
 volumes:
   pgdata:

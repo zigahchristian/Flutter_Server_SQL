@@ -22,14 +22,8 @@ getenv();
 
 // --- Express Init ---
 const app = express();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-export const imagepath = path.join(__dirname, "avatar");
-export const __dist = path.join(__dirname, "../frontend/dist");
-
-// --- Serve Static Files ---
-app.use("/api/static", express.static(imagepath));
-app.use("/", express.static(__dist));
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
 
 // --- CORS ---
 app.use(cors());
@@ -69,22 +63,22 @@ app.use(express.urlencoded({ extended: false }));
 app.use(helmet());
 
 // --- Logging ---
-const accessLogStream = fs.createWriteStream(
-  path.join(__dirname, "./db/access.log"),
-  { flags: "a" }
-);
+// const accessLogStream = fs.createWriteStream(
+//   path.join(__dirname, "./db/access.log"),
+//   { flags: "a" }
+// );
 
-app.use(morgan("combined", { stream: accessLogStream }));
+// app.use(morgan("combined", { stream: accessLogStream }));
 
-morgan.token("sessionid", (req) => req.sessionID || "------");
-morgan.token("user", (req) =>
-  req.session?.authUserId ? req.session.authUserId : "-----"
-);
-app.use(
-  morgan(
-    ':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent" :user :sessionid'
-  )
-);
+// morgan.token("sessionid", (req) => req.sessionID || "------");
+// morgan.token("user", (req) =>
+//   req.session?.authUserId ? req.session.authUserId : "-----"
+// );
+// app.use(
+//   morgan(
+//     ':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent" :user :sessionid'
+//   )
+// );
 
 // --- Routes ---
 app.use(router);

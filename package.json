@@ -12,17 +12,20 @@
     "dbpull": "npx prisma db pull"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
     "babel-jest": "^29.7.0",
+    "jest": "^30.0.3",
     "jest-environment-jsdom": "^29.7.0",
     "nodemon": "^3.0.2",
     "prisma": "^6.10.1",
+    "supertest": "^7.1.1",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.0"
+    "swagger-ui-express": "^5.0.0",
+    "ts-jest": "^29.4.0"
   },
   "dependencies": {
-    "@babel/core": "^7.26.0",
     "@babel/node": "^7.26.0",
-    "@babel/preset-env": "^7.26.0",
     "@prisma/client": "^6.10.1",
     "body-parser": "^1.20.2",
     "compression": "^1.7.4",
@@ -38,10 +41,8 @@
     "express-validator": "^7.2.1",
     "helmet": "^7.1.0",
     "http": "^0.0.1-security",
-    "jest": "^29.7.0",
     "morgan": "^1.10.0",
     "pg": "^8.16.2",
-    "supertest": "^6.3.3",
     "taxi": "file:..",
     "ts-dotenv": "^0.9.1",
     "zod": "^3.25.67"
