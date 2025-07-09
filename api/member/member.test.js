@@ -9,12 +9,23 @@ import {
 import { getenv } from "../../helpers/helpers.js";
 getenv(); // Load environment variables
 // Initialize test database connection
+
+const {
+  TEST_DB_USER,
+  TEST_DB_PASSWORD,
+  TEST_DB_HOST,
+  TEST_DB_PORT,
+  TEST_DB_NAME,
+} = process.env;
+
+const testDbUrl = `postgresql://${TEST_DB_USER}:${encodeURIComponent(
+  TEST_DB_PASSWORD
+)}@${TEST_DB_HOST}:${TEST_DB_PORT}/${TEST_DB_NAME}`;
+
 const testPrisma = new PrismaClient({
   datasources: {
     db: {
-      url:
-        process.env.TEST_DATABASE_URL ||
-        "postgresql://societas_user:ZmAIb2lFm1ODFembntdCuCIwuULENVYi@dpg-d1ckkrh5pdvs73evlcig-a.oregon-postgres.render.com/testdb",
+      url: testDbUrl,
     },
   },
 });

@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS members (
     membername TEXT NOT NULL,
     firstname  TEXT NOT NULL,
     lastname TEXT NOT NULL,
+    gender TEXT NOT NULL,
     email TEXT UNIQUE NOT NULL,
     phone TEXT,
     position TEXT,

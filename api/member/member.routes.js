@@ -1,6 +1,7 @@
 import express from "express";
 import {
   createNewMember,
+  addManyMembers,
   getAllMembers,
   getAMemberById,
   updateMemberByID,
@@ -13,6 +14,7 @@ import { memberSchema } from "./member.schema.js";
 const router = express.Router();
 
 router.post("/", validateWithZod(memberSchema), createNewMember);
+router.post("/bulk", addManyMembers);
 router.get("/", getAllMembers);
 router.get("/:id", getAMemberById);
 router.patch("/:id", validateWithZod(memberSchema.partial()), updateMemberByID); // .partial() for optional update fields
