@@ -13,6 +13,7 @@ export const memberSchema = z.object({
   occupation: z.string().optional(),
   otherskills: z.string().optional(),
   profilepicture: z.string().optional(),
+  publicprofilepictureurl: z.string().optional(),
   emergencycontactphone: z.string().optional(),
   emergencycontactname: z.string().optional(),
   emergencycontactrelationship: z.string().optional(),

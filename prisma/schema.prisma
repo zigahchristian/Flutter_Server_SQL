@@ -22,7 +22,7 @@ model attendance {
 }
 
 model members {
-  id                           Int          @id
+  id                           Int          @id @default(autoincrement())
   membername                   String
   firstname                    String
   lastname                     String
@@ -33,7 +33,8 @@ model members {
   dateofbirth                  DateTime?    @db.Date
   occupation                   String?
   otherskills                  String?
-  profilepicture               String?
+  profilepicture               String?      @default("avatar.png")
+  publicprofilepictureurl      String?      @default("avatar.png")
   emergencycontactphone        String?
   emergencycontactname         String?
   emergencycontactrelationship String?

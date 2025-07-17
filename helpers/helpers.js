@@ -3,6 +3,14 @@ import dotenv from "dotenv";
 
 const { unlink } = "node:fs/promises";
 
+import { v2 as cloudinary } from "cloudinary";
+
+export const cloudinaryconfig = cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
 export const random = () => crypto.randomBytes(128).toString("base64");
 
 export const authentication = (salt, password) => {

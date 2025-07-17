@@ -15,7 +15,8 @@ CREATE TABLE IF NOT EXISTS members (
     dateofbirth DATE,
     occupation TEXT,
     otherskills TEXT,
-    profilepicture TEXT,
+    profilepicture TEXT DEFAULT 'avatar.png',
+    publicprofilepictureurl TEXT DEFAULT 'avatar.png', -- Default public profile picture
     emergencycontactphone TEXT,
     emergencycontactname TEXT,
     emergencycontactrelationship TEXT,
